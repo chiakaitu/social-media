@@ -1,5 +1,7 @@
 package com.chiakaitu.social_media.controller;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,8 @@ public class LoginController {
 
     // 登入功能
     @PostMapping
-    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<Map<String, String>> login(@RequestBody LoginRequest loginRequest) {
+        Map<String, String> response = new HashMap<>();
         Optional<User> user = userService.findUserByPhoneNum(loginRequest.getPhoneNum());
 
         if (user.isPresent()) {
@@ -35,13 +38,18 @@ public class LoginController {
             boolean isPasswordValid = userService.validatePassword(loginRequest.getPassword(), user.get().getPassword());
 
             if (isPasswordValid) {
-                return ResponseEntity.ok("Login successful");
+                response.put("result", "0");
+                response.put("message", "Login successful");
+                return ResponseEntity.ok(response);
             } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid password");
+                response.put("result", "1");
+                response.put("message", "Invalid password");
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
             }
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+            response.put("result", "1");
+            response.put("message", "User not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
     }
-
 }

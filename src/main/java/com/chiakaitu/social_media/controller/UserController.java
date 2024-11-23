@@ -1,8 +1,12 @@
 package com.chiakaitu.social_media.controller;
 
+import com.chiakaitu.social_media.entity.User;
+import com.chiakaitu.social_media.service.UserService;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.chiakaitu.social_media.entity.User;
-import com.chiakaitu.social_media.service.UserService;
+
+
+
 
 @RestController
 @RequestMapping("/api/users")
@@ -38,9 +43,18 @@ public class UserController {
 
     // 註冊使用者
     @PostMapping
-    public ResponseEntity<?> createUser(@RequestBody User user) {
-        userService.createUser(user);
-        return ResponseEntity.ok("User created successfully.");
+    public ResponseEntity<Map<String, String>> createUser(@RequestBody User user) {
+        Map<String, String> response = new HashMap<>();
+        try {
+            userService.createUser(user);
+            response.put("result", "0");
+            response.put("message", "User created successfully");
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            response.put("result", "1");
+            response.put("message", "Failed to create user: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
     }
 
     // 修改使用者資訊
