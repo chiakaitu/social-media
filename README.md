@@ -1,6 +1,8 @@
 # socialMedia
 這是一個簡易的社群媒體平台，以 Maven 作為專案建立的工具，並使用 Spring Boot 搭配 Vue.js 完成。
 
+[API 規格文件](/src/main/java/com/chiakaitu/social_media/controller/API.md)
+
 將具備以下功能：
 1. 註冊功能
 2. 登入驗證功能
@@ -10,7 +12,12 @@
 ## 啟動專案說明
 ### MySQL
 啟動 MySQL `` brew services start mysql ``。
-初始化資料庫 `` mysql -u root -p < DB/schema.sql `` `` mysql -u root -p < DB/data.sql  ``
+
+初始化資料庫
+
+`` mysql -u root -p < DB/schema.sql ``
+
+`` mysql -u root -p < DB/data.sql  ``
 
 ### Maven
 於資料夾根目錄執行指令：
