@@ -20,12 +20,14 @@
 `` mysql -u root -p < DB/data.sql  ``
 
 ### Maven
-於資料夾根目錄執行指令：
-`` mvn clean package ``
-將於 /target/ 產生 .jar 檔。
+~~於資料夾根目錄執行指令：~~
+~~`` mvn clean package ``~~
+~~將於 /target/ 產生 .jar 檔。~~
 
-執行指令：
-`` java -jar target/social-media-0.0.1-SNAPSHOT.jar ``
+~~執行指令：~~
+~~`` java -jar target/social-media-0.0.1-SNAPSHOT.jar ``~~
+
+請開啟專案，於根目錄使用 IDE 的 run 執行專案。
 
 完成後即可訪問 ` localhost:8080 ` 檢視專案。
 
