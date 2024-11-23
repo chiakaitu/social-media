@@ -10,6 +10,12 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.time.LocalDateTime;
 
+
+
+
+
+
+@Entity
 @Table(name = "Post")
 public class Post {
     @Id
