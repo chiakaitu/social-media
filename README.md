@@ -40,6 +40,6 @@
 
 查詢會員資訊 ` [GET] /api/users/{userId} `
 
-取得貼文列表 ` [GET] /api/users/{userId}/posts `
+取得用戶貼文列表 ` [GET] /api/users/{userId}/posts `
 
 發佈貼文 ` [POST] /api/posts `
