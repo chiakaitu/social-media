@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 
+
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -34,12 +36,20 @@ public class UserController {
 
     // 取得使用者資訊
     @GetMapping("/{id}")
-    public ResponseEntity<?> findUserById(@PathVariable int id) {
+    public ResponseEntity<Map<String, Object>> findUserById(@PathVariable int id) {
+        Map<String, Object> response = new HashMap<>();
         Optional<User> user = userService.findUserById(id);
         if (user.isPresent()) {
-            return ResponseEntity.ok(user.get());
+            response.put("result", "0");
+            response.put("result", "success");
+            response.put("detail", user.get());
+
+            return ResponseEntity.ok(response);
         } else {
-            return ResponseEntity.notFound().build();
+            response.put("result", "1");
+            response.put("message", "No data.");
+            
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
     }
 

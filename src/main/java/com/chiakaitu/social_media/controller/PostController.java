@@ -17,13 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 
-
-
-
-
-
-
-
 @RestController
 @RequestMapping("/api/")
 public class PostController {
@@ -38,22 +31,20 @@ public class PostController {
     // 取得訊息列表
     @GetMapping("/users/{id}/posts")
     public ResponseEntity<Map<String, Object>> getPostsByUserId(@PathVariable("id") Integer userId) {
+        Map<String, Object> response = new HashMap<>();
         try {
             var posts = postService.getPostsByUserId(userId);
 
-            // 構建成功的響應
-            Map<String, Object> response = new HashMap<>();
             response.put("result", "0");
             response.put("message", "success");
             response.put("details", posts);
 
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            Map<String, Object> errorResponse = new HashMap<>();
-            errorResponse.put("result", "1");
-            errorResponse.put("message", "Failed to retrieve posts: " + e.getMessage());
+            response.put("result", "1");
+            response.put("message", "Failed to retrieve posts: " + e.getMessage());
 
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 
