@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-
 @Service
 public class PostServiceImpl implements PostService {
 
@@ -17,6 +16,11 @@ public class PostServiceImpl implements PostService {
     @Autowired
     public PostServiceImpl(PostDAO postDao) {
         this.postDao = postDao;
+    }
+
+    @Override
+    public List<Post> getPosts() {
+        return postDao.findAll();
     }
 
     @Override

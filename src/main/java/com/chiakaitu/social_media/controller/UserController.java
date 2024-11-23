@@ -16,13 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
-
-
-
-
-
-
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -41,7 +34,7 @@ public class UserController {
         Optional<User> user = userService.findUserById(id);
         if (user.isPresent()) {
             response.put("result", "0");
-            response.put("result", "success");
+            response.put("message", "success");
             response.put("detail", user.get());
 
             return ResponseEntity.ok(response);
