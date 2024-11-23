@@ -5,6 +5,7 @@ import java.util.List;
 
 
 public interface PostService {
+    // 取得貼文列表
     List<Post> getPosts();
 
     // 新增貼文
