@@ -1,5 +1,5 @@
 -- 建立資料庫
-CREATE DATABASE social_media_platform;
+CREATE DATABASE IF NOT EXISTS social_media_platform;
 
 -- 切換到該資料庫
 USE social_media_platform;
@@ -8,9 +8,9 @@ USE social_media_platform;
 CREATE TABLE User (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     user_name VARCHAR(100) NOT NULL,
+    phone_num VARCHAR(10) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,
-    salt VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     cover_image TEXT,
     biography TEXT
 );

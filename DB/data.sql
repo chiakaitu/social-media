@@ -2,10 +2,10 @@
 USE social_media_platform;
 
 -- 插入範例用戶
-INSERT INTO User (user_name, email, password_hash, salt, cover_image, biography)
+INSERT INTO User (user_name, phone_num, email, password, cover_image, biography)
 VALUES
-    ('Alice', 'alice@example.com', 'hashed_password1', 'random_salt1', NULL, 'Hi, I am Alice!'),
-    ('Bob', 'bob@example.com', 'hashed_password2', 'random_salt2', NULL, 'I am Bob.');
+    ('Alice', '0987654321', 'alice@example.com', 'hashed_password1', NULL, 'Hi, I am Alice!'),
+    ('Bob', '0912345678', 'bob@example.com', 'hashed_password2', NULL, 'I am Bob.');
 
 -- 插入範例發文
 INSERT INTO Post (user_id, content, image)
