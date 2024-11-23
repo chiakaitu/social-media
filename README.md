@@ -45,3 +45,5 @@
 取得貼文列表 ` [GET] /api/posts `
 
 發佈貼文 ` [POST] /api/posts `
+
+發佈留言 ` [POST] /api/comments `
