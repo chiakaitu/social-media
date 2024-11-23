@@ -1,6 +1,5 @@
 package com.chiakaitu.social_media.service.impl;
 
-import com.chiakaitu.social_media.dao.CommentDAO;
 import com.chiakaitu.social_media.dao.PostDAO;
 import com.chiakaitu.social_media.entity.Post;
 import com.chiakaitu.social_media.service.PostService;
@@ -15,7 +14,7 @@ public class PostServiceImpl implements PostService {
     private final PostDAO postDao;
 
     @Autowired
-    public PostServiceImpl(PostDAO postDao, CommentDAO commentDAO) {
+    public PostServiceImpl(PostDAO postDao) {
         this.postDao = postDao;
     }
 
