@@ -27,7 +27,7 @@
 ~~執行指令：~~
 ~~`` java -jar target/social-media-0.0.1-SNAPSHOT.jar ``~~
 
-請開啟專案，於根目錄使用 IDE 的 run 執行專案。
+請於根目錄執行指令： `` mvn spring-boot:run `` 或使用 IDE 的 run 執行專案。
 
 完成後即可訪問 ` localhost:8080 ` 檢視專案。
 
